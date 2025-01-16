@@ -1,0 +1,53 @@
+# Ignore PHPStorm or other IDE settings
+.idea/
+
+# Ignore Composer dependencies (if you're using Composer)
+vendor/
+
+# Ignore PHPUnit test cache and logs
+phpunit-result.cache
+phpunit-logs/
+
+# Ignore log files
+*.log
+*.sql
+*.sqlite
+
+# Ignore .env files containing sensitive information (e.g., database credentials)
+.env
+
+# Ignore temporary or backup files
+*.swp
+*.swo
+*.bak
+*.tmp
+*.backup
+
+# Ignore compiled bytecode (e.g., opcache)
+*.opcache
+
+# Ignore the built application (e.g., compiled static files or build artifacts)
+/build/
+/dist/
+
+/node_modules/  # If you have a Node.js dependency for asset compilation
+
+# Ignore system files (macOS, Linux, Windows)
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ignore Composer lock file (optional - it might be good to commit it for consistency)
+composer.lock
+
+# Ignore PHPUnit output
+phpunit.xml
+phpunit.xml.dist
+
+# Ignore SSH keys (if not needed in the repository)
+id_rsa
+id_rsa.pub
+
+# Ignore user-specific configuration
+*.user
+*.user.ini

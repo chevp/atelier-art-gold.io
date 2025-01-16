@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Kurs | Atelier Art Gold</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://scapestation.com/vendor/bootswatch/Bootswatch_ Quartz_files/bootstrap.css">
+  <link rel="stylesheet" href="https://scapestation.com/vendor/bootswatch/Bootswatch_ Quartz_files/font-awesome.min.css">
+  <link rel="stylesheet" href="https://scapestation.com/vendor/bootswatch/Bootswatch_ Quartz_files/prism-okaidia.css">
+  <link rel="stylesheet" href="https://scapestation.com/vendor/bootswatch/Bootswatch_ Quartz_files/custom.min.css">
+  <style>
+    .css22-a-brand {
+      color: black;
+      display: block;
+      text-align: center;
+      text-decoration: none;
+    }
+    .css22-a-brand:hover {
+      color: black;
+      text-decoration: none;
+    }
+    a {
+      text-decoration:none;
+    }
+    .course-container {
+      display: none;
+    }
+  </style>
+
+  <!-- Firebase SDK for Firebase v9 -->
+  <script type="module">
+
+    // Function to fetch course data from Firebase Function
+    const courseContainer = document.querySelector('.course-container');
+
+    // Get the document ID from the URL hash
+    const courseId = window.location.hash.substring(1); // removes the '#' character
+
+    if (!courseId) {
+      console.error('Course ID not found in the URL');
+    }
+
+    // Firebase function URL, add the courseId dynamically
+    const courseDataURL = `https://firestore.googleapis.com/v1/projects/scoe-8a318/databases/(default)/documents/course/${courseId}`;
+
+    // Function to load the course data
+    async function loadCourseData() {
+      try {
+        const response = await fetch(courseDataURL);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const courseData = await response.json();
+
+        console.log('courseData', courseData);
+
+        // Check if courseData and required fields exist
+        if (courseData.fields) {
+          // Populate the HTML with the Firestore data
+          document.querySelector(".card-title").textContent = courseData.fields.title?.stringValue || "Malkurs";
+          document.querySelector(".card-text").textContent = courseData.fields.description?.stringValue || "?";
+          document.querySelector(".card-body p:nth-of-type(6)").textContent = courseData.fields.term?.stringValue || "?";
+          document.querySelector(".card-body p:nth-of-type(7)").textContent = courseData.fields.time?.stringValue || "?";
+          document.querySelector(".card-body p:nth-of-type(8)").textContent = courseData.fields.registration_deadline?.stringValue || "?";
+          document.querySelector(".card-body p:nth-of-type(9)").textContent = "Vereinshausstrasse 18, 4133 Pratteln";
+          document.querySelector(".card-body p:nth-of-type(10)").textContent = courseData.fields.cost?.stringValue || "CHF 21.- pro Lektion exkl. Material";
+
+          // Update the "Anmelden" button link dynamically
+          const emailLink = `mailto:chevigold@bluemail.ch?subject=Kursanmeldung%20${courseData.fields.title?.stringValue}`;
+          document.querySelector("a[href^='mailto:']").setAttribute("href", emailLink);
+
+          courseContainer.style.display = 'block'; // Show the course container
+        } else {
+          console.error('Course data is missing required fields');
+        }
+
+      } catch (error) {
+        console.error("Error fetching course data:", error);
+      }
+    }
+
+    // Call the function to load course data
+    if (courseId) {
+      loadCourseData();
+    }
+
+  </script>
+
+</head>
+<body>
+  <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-success">
+    <div class="container">
+      <a href="https://atelier-art-gold.ch" style="font-weight:800;font-size:32px;" class="navbar-brand css22-a-brand">Atelier Art Gold</a>
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-md-auto">
+          <li class="nav-item"><a class="nav-link" href="https://atelier-art-gold.ch/page/aag-home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://atelier-art-gold.ch/page/aag-home#aktuelles">Aktuelles</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://atelier-art-gold.ch/page/aag-home#atelierkurse">Atelierkurse</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://atelier-art-gold.ch/page/aag-home#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-sm course-container" style="max-width:800px;">
+    <div class="clearfix">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card border-primary">
+            <div class="card-body">
+              <h4 class="card-title"></h4>
+              <p class="card-text"></p>
+              <p>Die Kurse werden gemäss dem BAG-Hygienekonzept durchgeführt.</p>
+              <strong>Leitung</strong>
+              <p></p>
+              <strong>Telefon</strong>
+              <p></p>
+              <strong>E-Mail</strong>
+              <p></p>
+              <strong>Kurstermine</strong>
+              <p></p>
+              <strong>Kurszeit</strong>
+              <p></p>
+              <strong>Anmelden bis:</strong>
+              <p></p>
+              <strong>Kursort</strong>
+              <p></p>
+              <strong>Kosten</strong>
+              <p></p>
+              <br>
+              <a href="mailto:?subject=Kursanmeldung%20Acrylmalkurs">
+                <button type="button" class="btn btn-primary btn-lg">hier anmelden</button>
+              </a>
+            </div>
+            <div class="card-footer">
+              <a style="text-decoration:underline;" href="https://atelier-art-gold.ch/page/aag-home#atelierkurse">zurück</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="bs-docs-section clearfix">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright © 2025 All Rights Reserved by Atelier Art Gold. <a style="text-decoration:underline;" href="https://atelier-art-gold.ch/page/aag-impressum">Impressum</a> <a href="https://atelier-art-gold.ch/page/aag-kursbedingungen" style="text-decoration:underline;">Kursbedingungen</a> <a style="text-decoration:underline;" href="https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/so-schuetzen-wir-uns.html">BAG-Hygienekonzept</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://scapestation.com/vendor/bootswatch/Bootswatch_ Quartz_files/jquery.min.js.Download"></script>
+  <script src="https://scapestation.com/vendor/bootswatch/Bootswatch_ Quartz_files/bootstrap.bundle.min.js.Download"></script>
+</body>
+</html>

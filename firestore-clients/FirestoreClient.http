@@ -1,0 +1,3 @@
+### GET request to create a document in Firestore
+GET https://firestore.googleapis.com/v1/projects/scoe-8a318/databases/(default)/documents/course/22b172c1-cb13-45a0-8212-f01cc1630c7f HTTP/1.0
+Content-Type: application/json
