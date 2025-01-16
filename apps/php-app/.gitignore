@@ -10,7 +10,7 @@ phpunit-logs/
 
 # Ignore log files
 *.log
-*.sql
+# *.sql
 *.sqlite
 
 # Ignore .env files containing sensitive information (e.g., database credentials)
