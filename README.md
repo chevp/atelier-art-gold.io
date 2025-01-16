@@ -56,12 +56,6 @@ To set up this project locally, follow these steps:
 
 ---
 
-## Deployment
-
-This project is deployed using GitHub Actions. On every push to the main branch, a GitHub Action is triggered to build and deploy the application to GitHub Pages.
-
----
-
 ## Contributing
 
 Contributions are welcome! If you would like to contribute to Atelier Art Gold's homepage, please follow these steps:
