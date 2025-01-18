@@ -12,10 +12,10 @@ jobs:
       # Step 1: Checkout the code
       - uses: actions/checkout@v4
 
-      # Step 2: Set up Node.js
+      # Step 2: Set up Node.js (update to at least version 18.x)
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'  # Ensure this is the correct version for your app
+          node-version: '18'  # Updated Node.js version to meet Angular's requirements
 
       # Step 3: Change directory to Angular app
       - run: cd apps/angular-app
@@ -23,13 +23,10 @@ jobs:
       # Step 4: Install dependencies (npm install)
       - run: npm install
 
-      # Step 5: Install Angular CLI globally (if it's not installed)
-      - run: npm install -g @angular/cli
+      # Step 5: Build the Angular app using the local 'ng' binary
+      - run: ./node_modules/.bin/ng build --configuration production
 
-      # Step 6: Build the Angular app
-      - run: ng build --configuration production
-
-      # Step 7: Deploy to Firebase Hosting
+      # Step 6: Deploy to Firebase Hosting
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
