@@ -1,0 +1,29 @@
+# Dependency directories (if you ever use npm or other package managers)
+node_modules/
+
+# Build output or other generated files (if using build tools)
+dist/
+build/
+
+# Editor-specific files (e.g., VSCode, Sublime Text, etc.)
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store        # macOS
+Thumbs.db         # Windows
+*~                # Linux/Unix (temporary files)
+
+# Log files
+*.log
+
+# npm or yarn logs (if applicable)
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files created by text editors or IDEs
+*.swp
+*.swo
+*.bak
+*.tmp
