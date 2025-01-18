@@ -1,0 +1,38 @@
+name: Deploy to Firebase Hosting on commit to main
+
+on:
+  push:
+    branches:
+      - main  # Triggers deployment when there's a commit to the 'main' branch
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout the code
+      - uses: actions/checkout@v4
+
+      # Step 2: Set up Node.js
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Ensure this is the correct version for your app
+
+      # Step 3: Change directory to Angular app
+      - run: cd apps/angular-app
+
+      # Step 4: Install dependencies (npm install)
+      - run: npm install
+
+      # Step 5: Install Angular CLI globally (if it's not installed)
+      - run: npm install -g @angular/cli
+
+      # Step 6: Build the Angular app
+      - run: ng build --configuration production
+
+      # Step 7: Deploy to Firebase Hosting
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SCOE_8A318 }}
+          channelId: live
+          projectId: scoe-8a318
