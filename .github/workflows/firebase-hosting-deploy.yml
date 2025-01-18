@@ -3,7 +3,7 @@ name: Deploy to Firebase Hosting on commit to main
 on:
   push:
     branches:
-      - main  # Triggers deployment when there's a commit to the 'main' branch
+      - main  # Trigger deployment when there's a commit to the 'main' branch
 
 jobs:
   build_and_deploy:
@@ -15,9 +15,9 @@ jobs:
       # Step 2: Set up Node.js (update to at least version 18.x)
       - uses: actions/setup-node@v2
         with:
-          node-version: '18'  # Updated Node.js version to meet Angular's requirements
+          node-version: '18'  # Ensure that Node.js version 18 or later is used
 
-      # Step 3: Change directory to Angular app
+      # Step 3: Change directory to the Angular app folder
       - run: cd apps/angular-app
 
       # Step 4: Install dependencies (npm install)
