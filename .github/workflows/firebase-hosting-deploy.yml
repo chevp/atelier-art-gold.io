@@ -17,16 +17,13 @@ jobs:
         with:
           node-version: '18'  # Ensure that Node.js version 18 or later is used
 
-      # Step 3: Change directory to the Angular app folder
-      - run: cd apps/angular-app
+      # Step 3: Install dependencies and build the Angular app in the correct directory
+      - run: |
+          cd apps/angular-app
+          npm install
+          ./node_modules/.bin/ng build --configuration production
 
-      # Step 4: Install dependencies (npm install)
-      - run: npm install
-
-      # Step 5: Build the Angular app using the local 'ng' binary
-      - run: ./node_modules/.bin/ng build --configuration production
-
-      # Step 6: Deploy to Firebase Hosting
+      # Step 4: Deploy to Firebase Hosting
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
