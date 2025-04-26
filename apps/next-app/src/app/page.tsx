@@ -1,101 +1,198 @@
-import Image from "next/image";
+"use client";
+
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <main className="container">
+
+      {/* Banner Image */}
+      <div>
+        <img
+          className="banner-img"
+          src={`${basePath}/img/titelblatt_atelier.jpg`}
+          alt="Titelbild"
+        />
+      </div>
+
+      {/* Willkommen Section */}
+      <section id="navbars" className="mt-5">
+        <div className="page-header">
+          <h1>Willkommen im Atelier Art Gold</h1>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <p>
+          Das kleine Atelier, wo man kreativ seinem Hobby nachgehen kann. In netter Gesellschaft ist es möglich viel Neues zu lernen und auszuprobieren. Frau Evelyne Chevillat hilft Ihnen Ideen umzusetzen und gemeinsam zu tollen Ergebnissen zu gelangen.
+        </p>
+      </section>
+
+      {/* About Evelyne */}
+      <section className="mt-5">
+        <div className="row">
+          <div className="col-lg-3">
+            <img
+              src={`${basePath}/img/pic1.png`}
+              width="267"
+              height="204"
+              alt="Evelyne Chevillat-Gold"
+            />
+          </div>
+          <div className="col-lg-7">
+            <h2>Evelyne Chevillat-Gold</h2>
+            <p>
+              Aufgewachsen und Schulbesuche in Basel. Lebt mit Ihrer Familie in Muttenz. Nebst der beruflichen Ausbildung und Tätigkeit als Dental- und Prophylaxe-Assistentin und Expertin der Berufsschule, zählt das kreative Gestalten mit Farben und Formen mit verschiedenen Materialien zur grossen Leidenschaft. Künstlerische Aus- und Weiterbildungen durch diverse Seminare bei Kunstschaffenden sowie autodidaktische Ausbildungen.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Aktuelles Section */}
+      <section id="aktuelles" className="mt-5">
+        <div className="page-header">
+          <h1>Aktuelles</h1>
+        </div>
+        <div className="row">
+
+          {/* Card 1 */}
+          <div className="col-lg-4">
+            <div className="card border-primary mb-4">
+              <div className="card-body">
+                <h4 className="card-title">Verkauf von Glasobjekten</h4>
+                <p className="card-text">Ich bemale vielseitige Glasobjekte wie Cakeplatten, Vasen, Uhren und saisonale Deko. Auch individuelle Wünsche werden umgesetzt.</p>
+                <a href="mailto:chevigold@bluemail.ch?subject=Glasobjektbestellung" className="btn btn-primary btn-lg">hier bestellen</a>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2 */}
+          <div className="col-lg-4">
+            <div className="card border-primary mb-4">
+              <div className="card-body">
+                <h4 className="card-title">Kursprogramm</h4>
+                <p className="card-text">Diverse Kurse finden nachmittags und abends statt. Freie Plätze auf Anfrage verfügbar.</p>
+                <a href="#atelierkurse" className="btn btn-primary btn-lg">zum Kursprogramm</a><br /><br />
+                <a href="/assets/pdf/Flyer%202023.pdf" className="btn btn-primary btn-lg">Download Flyer</a>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 3 */}
+          <div className="col-lg-4">
+            <div className="card border-primary mb-4">
+              <div className="card-body">
+                <h4 className="card-title">Verkauf von Fächern</h4>
+                <p className="card-text">Ich bemale Fächer individuell, auch mit Clublogos. Handgemalt und einzigartig!</p>
+                <a href="mailto:chevigold@bluemail.ch?subject=Fächerbestellung" className="btn btn-primary btn-lg">hier bestellen</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Additional Products */}
+        <div className="row">
+
+          {/* Card 4 */}
+          <div className="col-lg-4">
+            <div className="card border-primary mb-4">
+              <div className="card-body">
+                <h4 className="card-title">Verkauf von Acrylbildern</h4>
+                <p className="card-text">Liebevoll gestaltete Acrylbilder auf Leinwand zum Verkauf verfügbar.</p>
+                <a href="mailto:chevigold@bluemail.ch?subject=Acrylbildbestellung" className="btn btn-primary btn-lg">hier bestellen</a>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 5 */}
+          <div className="col-lg-4">
+            <div className="card border-primary mb-4">
+              <div className="card-body">
+                <h4 className="card-title">Country-Glasanhänger</h4>
+                <p className="card-text">Individuelle Glasanhänger – Form, Farbe und Sujet frei wählbar.</p>
+                <a href="mailto:chevigold@bluemail.ch?subject=Glasanhängerbestellung" className="btn btn-primary btn-lg">hier bestellen</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Atelierkurse Section */}
+      <section id="atelierkurse" className="mt-5">
+        <div className="page-header">
+          <h1>Atelierkurse</h1>
+        </div>
+        <p>Ich vermittle gerne mein Wissen und unterstütze bei der kreativen Umsetzung eigener Ideen. Seit über 15 Jahren führe ich diese Kurse mit Begeisterung durch.</p>
+        <div className="row">
+
+          {/* Kurs 1 */}
+          <div className="col-lg-4">
+            <div className="card border-primary mb-4">
+              <div className="card-body">
+                <h4 className="card-title">Acrylmalkurs</h4>
+                <p className="card-text">Malen Sie Leinwände nach Wunsch in kleinen Gruppen. Geeignet für Anfänger und Fortgeschrittene.</p>
+                <a href={`${basePath}/aag-acrylmalkurs-2024-01`} className="btn btn-primary btn-lg">Kurs Januar 2024</a><br />
+                <a href={`${basePath}/aag-acrylmalkurs-2023`} className="btn btn-secondary btn-lg mt-2">Kurs August 2023</a><br />
+                <a href={`${basePath}/aag-acrylmalkurs`} className="btn btn-secondary btn-lg mt-2">Kurs Januar 2023</a>
+              </div>
+            </div>
+          </div>
+
+          {/* Kurs 2 */}
+          <div className="col-lg-4">
+            <div className="card border-secondary mb-4">
+              <div className="card-body">
+                <h4 className="card-title">Glas- und Porzellanmalkurs</h4>
+                <p className="card-text">Individuelle Objekte bemalen mit moderner Technik. Perfekt auch für saisonale Motive.</p>
+                <a href={`${basePath}/aag-glasmalkurs-2024-01`} className="btn btn-primary btn-lg">Kurs Januar 2024</a><br />
+                <a href={`${basePath}/aag-glasmalkurs-2023`} className="btn btn-secondary btn-lg mt-2">Kurs August 2023</a><br />
+                <a href={`${basePath}/aag-glasmalkurs`} className="btn btn-secondary btn-lg mt-2">Kurs Januar 2023</a>
+              </div>
+            </div>
+          </div>
+
+          {/* Kurs 3 */}
+          <div className="col-lg-4">
+            <div className="card border-success mb-4">
+              <div className="card-body">
+                <h4 className="card-title">Silberschmuckkurs</h4>
+                <p className="card-text">Gestalten Sie unter Anleitung Ringe, Anhänger oder Ohrschmuck in Silber.</p>
+                <a href={`${basePath}/aag-silberschmuckkurs-2024-01`} className="btn btn-primary btn-lg">Kurs Januar 2024</a><br />
+                <a href={`${basePath}/aag-silberschmuckkurs-2023`} className="btn btn-secondary btn-lg mt-2">Kurs August 2023</a><br />
+                <a href={`${basePath}/aag-silberschmuckkurs`} className="btn btn-secondary btn-lg mt-2">Kurs Januar 2023</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Kontakt Section */}
+      <section id="kontakt" className="mt-5 mb-5">
+        <div className="page-header">
+          <h1>Kontakt</h1>
+        </div>
+        <p>
+          Atelier Art Gold<br />
+          Evelyne Chevillat-Gold<br />
+          Vereinshausstrasse 18<br />
+          4133 Pratteln<br />
+          079 685 01 20<br />
+          chevigold@bluemail.ch
+        </p>
+
+        <h3>Wo Sie das Atelier finden:</h3>
+        <iframe
+          width="100%"
+          height="320"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10778.34886268308!2d7.696313399999999!3d47.51742959999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4791b610dd151ff3%3A0x19b9f7f7155e9226!2sVereinshausstrasse+18%2C+4133+Pratteln!5e0!3m2!1sde!2sch!4v1440673794715"
+          frameBorder="0"
+          allowFullScreen
+        ></iframe>
+      </section>
+
+    </main>
   );
 }
