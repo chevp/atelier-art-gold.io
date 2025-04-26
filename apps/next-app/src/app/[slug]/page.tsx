@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 
 type Course = {
   title: string;
@@ -44,14 +45,12 @@ const courses: Record<string, Course> = {
   },
 };
 
-// For static generation of all course slugs
 export async function generateStaticParams() {
   return Object.keys(courses).map((slug) => ({
     slug,
   }));
 }
 
-// For dynamic metadata (SEO per page)
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
   const course = courses[resolvedParams.slug];
@@ -61,7 +60,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return { title: course.title };
 }
 
-// ✅ Fixed: Page component must be async now!
 export default async function CoursePage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
   const course = courses[resolvedParams.slug];
@@ -76,9 +74,9 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
         <h1>{course.title}</h1>
       </div>
       <p>{course.description}</p>
-      <a href="/#atelierkurse" className="btn btn-primary mt-4">
+      <Link href="/#atelierkurse" className="btn btn-primary mt-4">
         Zurück zu den Kursen
-      </a>
+      </Link>
     </main>
   );
 }
