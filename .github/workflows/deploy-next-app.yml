@@ -18,6 +18,8 @@ concurrency:
 
 jobs:
   deploy:
+    env:
+      NEXT_PUBLIC_BASE_PATH: /atelier-art-gold.io
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -42,7 +44,9 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: apps/next-app/out  # Must exist after build!
+          path: apps/next-app/out
+          name: github-pages
+          retention-days: 1  # Optional, but good to add
 
       - name: Deploy to GitHub Pages
         id: deployment
