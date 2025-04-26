@@ -4,6 +4,8 @@ name: Deploy Next App to GitHub Pages
 on:
   push:
     branches: [main]
+    paths:
+      - 'apps/next-app/**'  # Only trigger if files inside apps/next-app/ are modified
   workflow_dispatch:
 
 permissions:
