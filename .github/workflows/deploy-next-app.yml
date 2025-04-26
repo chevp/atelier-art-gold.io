@@ -38,7 +38,7 @@ jobs:
 
       - name: Build project
         working-directory: apps/next-app
-        run: npm run build && npm run export
+        run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
