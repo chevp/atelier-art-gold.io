@@ -1,11 +1,10 @@
-# GitHub Action to build and deploy apps/next-app automatically to GitHub Pages
 name: Deploy Next App to GitHub Pages
 
 on:
   push:
     branches: [main]
     paths:
-      - 'apps/next-app/**'  # Only trigger if files inside apps/next-app/ are modified
+      - 'apps/next-app/**'
   workflow_dispatch:
 
 permissions:
@@ -43,7 +42,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: apps/next-app/out
+          path: apps/next-app/out  # Must exist after build!
 
       - name: Deploy to GitHub Pages
         id: deployment
