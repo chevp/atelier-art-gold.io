@@ -10,28 +10,31 @@ on:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
-    env:
-      NODE_VERSION: '20'
+
     steps:
       # Step 1: Checkout the code
       - uses: actions/checkout@v4
 
-      # Step 2: Set up Node.js (update to at least version 18.x)
-      - uses: actions/setup-node@v2
+      # Step 2: Set up Node.js 20
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      # Step 3: Install dependencies and build the Angular app
-      - run: |
+      # Step 3: Install Firebase CLI globally
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools@latest
+
+      # Step 4: Install dependencies and build the Angular app
+      - name: Install & Build Angular
+        run: |
           cd apps/angular-app
           npm install
-          ./node_modules/.bin/ng build --configuration production
+          npx ng build --configuration production
 
-      # Step 4: Deploy to Firebase Hosting
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SCOE_8A318 }}
-          channelId: live
-          projectId: scoe-8a318
-          entryPoint: apps/angular-app
+      # Step 5: Deploy to Firebase Hosting
+      - name: Deploy to Firebase
+        run: |
+          firebase deploy --only hosting --project scoe-8a318
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_DEPLOY_TOKEN }}
