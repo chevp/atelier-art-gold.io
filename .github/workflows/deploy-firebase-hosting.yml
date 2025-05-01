@@ -5,34 +5,34 @@ on:
     branches:
       - main
     paths:
-      - 'apps/angular-app/**'  # Only trigger if something inside apps/angular-app/ changes
+      - 'apps/angular-app/**'
 
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the code
+      # Step 1: Checkout code
       - uses: actions/checkout@v4
 
-      # Step 2: Set up Node.js 20
-      - name: Set up Node.js
+      # Step 2: Set up Node.js 20+
+      - name: Use Node.js 20
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      # Step 3: Install Firebase CLI globally
+      # Step 3: Install Firebase CLI
       - name: Install Firebase CLI
         run: npm install -g firebase-tools@latest
 
-      # Step 4: Install dependencies and build the Angular app
-      - name: Install & Build Angular
+      # Step 4: Build Angular app
+      - name: Build Angular App
         run: |
           cd apps/angular-app
           npm install
           npx ng build --configuration production
 
-      # Step 5: Deploy to Firebase Hosting
+      # Step 5: Deploy to Firebase
       - name: Deploy to Firebase
         run: |
           firebase deploy --only hosting --project scoe-8a318
