@@ -12,29 +12,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout code
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      # Step 2: Set up Node.js 20+
-      - name: Use Node.js 20
+      - name: Set up Node.js 20
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      # Step 3: Install Firebase CLI
       - name: Install Firebase CLI
         run: npm install -g firebase-tools@latest
 
-      # Step 4: Build Angular app
-      - name: Build Angular App
+      - name: Install & Build Angular App
         run: |
           cd apps/angular-app
           npm install
           npx ng build --configuration production
 
-      # Step 5: Deploy to Firebase
-      - name: Deploy to Firebase
-        run: |
-          firebase deploy --only hosting --project scoe-8a318
+      - name: Deploy to Firebase Hosting
+        run: firebase deploy --only hosting --project scoe-8a318
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_DEPLOY_TOKEN }}
