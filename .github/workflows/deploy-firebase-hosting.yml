@@ -30,6 +30,8 @@ jobs:
           npx ng build --configuration production
 
       - name: Deploy to Firebase Hosting
-        run: firebase deploy --only hosting --project scoe-8a318
+        run: |
+          cd apps/angular-app
+          firebase deploy --only hosting --project scoe-8a318
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_DEPLOY_TOKEN }}
