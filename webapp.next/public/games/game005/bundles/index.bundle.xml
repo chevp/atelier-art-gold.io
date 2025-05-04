@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bundle id="core-ui" version="1.2.1">
+  <name>Elyrion Renderer</name>
+  <description>Initial Page.</description>
+  <entryScene>ui-renderer</entryScene>
+
+  <dependencies/>
+
+  <required-assets>
+    <asset
+      id="suzanne-in-box_v1"
+      type="glb"
+      name="suzanne-in-box_v1.glb"
+      size="204857600"
+      sha256="abc123..."
+      path="elyrion.node.engine/src/main/resources/assets/models/suzanne-in-box/SuzanneInBox.glb"
+    />    
+  </required-assets>
+
+  <ui>
+    <layout id="hud">
+      <root type="container" layout="vertical">
+        <children>
+          <label id="health-label" text="Health:"/>
+          <progress id="health-bar" value="100" max="100"/>
+          <label id="energy-label" text="Energy:"/>
+          <progress id="energy-bar" value="50" max="100"/>
+        </children>
+      </root>
+    </layout>
+
+    <layout id="dialog-box">
+      <root type="container" layout="vertical">
+        <children>
+          <label id="dialog-text" text=""/>
+          <button id="dialog-ok" text="OK" onClick="script:onDialogOk"/>
+        </children>
+      </root>
+    </layout>
+  </ui>
+
+  <scripts>
+    <script id="onDialogOk" lang="javascript">
+      <![CDATA[
+        function run(context) {
+          log("Dialog confirmed.");
+          context.hideUI("dialog-box");
+        }
+      ]]>
+    </script>
+  </scripts>
+</bundle>
