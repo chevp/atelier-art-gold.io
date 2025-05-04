@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'apps/next-app/**'
+      - 'webapp.next/**'
   workflow_dispatch:
 
 permissions:
@@ -34,17 +34,17 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        working-directory: apps/next-app
+        working-directory: webapp.next
         run: npm install
 
       - name: Build project
-        working-directory: apps/next-app
+        working-directory: webapp.next
         run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: apps/next-app/out
+          path: webapp.next/out
           name: github-pages
           retention-days: 1  # Optional, but good to add
 

@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'apps/angular-app/**'
+      - 'webapp.angular/**'
 
 jobs:
   build_and_deploy:
@@ -25,13 +25,13 @@ jobs:
 
       - name: Install & Build Angular App
         run: |
-          cd apps/angular-app
+          cd webapp.angular
           npm install
           npx ng build --configuration production
 
       - name: Deploy to Firebase Hosting
         run: |
-          cd apps/angular-app
+          cd webapp.angular
           firebase deploy --only hosting --project scoe-8a318
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_DEPLOY_TOKEN }}
