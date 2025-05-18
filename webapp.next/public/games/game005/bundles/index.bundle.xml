@@ -8,14 +8,25 @@
 
   <required-assets>
     <asset
-      id="suzanne-in-box_v1"
+      id="suzanne-in-box-v1"
       type="glb"
-      name="suzanne-in-box_v1.glb"
+      name="suzanne-in-box-v1.glb"
       size="204857600"
       sha256="abc123..."
       path="elyrion.node.engine/src/main/resources/assets/models/suzanne-in-box/SuzanneInBox.glb"
     />    
   </required-assets>
+
+  <scenes>
+    <scene id="ui-renderer">
+      <name>UI Renderer</name>
+      <entities>
+        <entity id="suzanne-in-box" type="model" asset="model:suzanne-in-box-v1"/>
+        <entity id="dialog-ui" type="ui" asset="ui:dialog-box"/>
+        <entity id="hud-ui" type="ui" asset="ui:hud"/>
+      </entities>
+    </scene>
+  </scenes>
 
   <ui>
     <layout id="hud">
