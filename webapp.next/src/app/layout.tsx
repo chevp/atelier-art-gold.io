@@ -40,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <p>
             &copy; 2024 Atelier Art Gold.
             <br />
-            <Link href="/page/aag-impressum" className="underline">
+            <Link href="https://atelier-art-gold.ch/page/aag-impressum" className="underline">
               Impressum
             </Link>{' '}
             |{' '}
