@@ -1,187 +1,131 @@
 "use client";
 
 export default function Home() {
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
   return (
-    <main className="container">
-
-      {/* Banner Image */}
-      <div>
-        <img
-          className="banner-img"
-          src={`${basePath}/img/titelblatt_atelier.jpg`}
-          alt="Titelbild"
-        />
+    <div className="max-w-6xl mx-auto px-6 py-12">
+      <div className="mb-12">
+        <img className="banner-img shadow-lg" src={basePath + "/img/titelblatt_atelier.jpg"} alt="Titelbild" />
       </div>
 
-      {/* Willkommen Section */}
-      <section id="navbars" className="mt-5">
-        <div className="page-header">
-          <h1>Willkommen im Atelier Art Gold</h1>
+      <section id="willkommen" className="mb-16">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gold-500 to-gold-600 flex items-center justify-center">
+            <span className="material-symbols-outlined text-white text-2xl">home</span>
+          </div>
+          <h1 className="text-3xl font-bold text-stone-800">Willkommen im Atelier Art Gold</h1>
         </div>
-        <p>
-          Das kleine Atelier, wo man kreativ seinem Hobby nachgehen kann. In netter Gesellschaft ist es möglich viel Neues zu lernen und auszuprobieren. Frau Evelyne Chevillat hilft Ihnen Ideen umzusetzen und gemeinsam zu tollen Ergebnissen zu gelangen.
+        <p className="text-stone-600 text-lg leading-relaxed max-w-3xl">
+          Das kleine Atelier, wo man kreativ seinem Hobby nachgehen kann. In netter Gesellschaft ist es moeglich viel Neues zu lernen.
         </p>
       </section>
 
-      {/* About Evelyne */}
-      <section className="mt-5">
-        <div className="row">
-          <div className="col-lg-3">
-            <img
-              src={`${basePath}/img/pic1.png`}
-              width="267"
-              height="204"
-              alt="Evelyne Chevillat-Gold"
-            />
-          </div>
-          <div className="col-lg-7">
-            <h2>Evelyne Chevillat-Gold</h2>
-            <p>
-              Aufgewachsen und Schulbesuche in Basel. Lebt mit Ihrer Familie in Muttenz. Nebst der beruflichen Ausbildung und Tätigkeit als Dental- und Prophylaxe-Assistentin und Expertin der Berufsschule, zählt das kreative Gestalten mit Farben und Formen mit verschiedenen Materialien zur grossen Leidenschaft. Künstlerische Aus- und Weiterbildungen durch diverse Seminare bei Kunstschaffenden sowie autodidaktische Ausbildungen.
-            </p>
+      <div className="section-divider"></div>
+
+      <section className="mb-16">
+        <div className="card glass rounded-xl p-8 border border-gold-200/50">
+          <div className="flex flex-col md:flex-row gap-8 items-start relative z-10">
+            <img src={basePath + "/img/pic1.png"} className="w-64 h-auto rounded-xl shadow-md" alt="Evelyne" />
+            <div>
+              <h2 className="text-2xl font-bold text-stone-800 mb-4">Evelyne Chevillat-Gold</h2>
+              <p className="text-stone-600 leading-relaxed">Aufgewachsen in Basel. Das kreative Gestalten mit Farben und Formen zaehlt zur grossen Leidenschaft.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Aktuelles Section */}
-      <section id="aktuelles" className="mt-5">
-        <div className="page-header">
-          <h1>Aktuelles</h1>
-        </div>
-        <div className="row">
+      <div className="section-divider"></div>
 
-          {/* Card 1 */}
-          <div className="col-lg-4">
-            <div className="card border-primary mb-4">
-              <div className="card-body">
-                <h4 className="card-title">Verkauf von Glasobjekten</h4>
-                <p className="card-text">Ich bemale vielseitige Glasobjekte wie Cakeplatten, Vasen, Uhren und saisonale Deko. Auch individuelle Wünsche werden umgesetzt.</p>
-                <a href="mailto:chevigold@bluemail.ch?subject=Glasobjektbestellung" className="btn btn-primary btn-lg">hier bestellen</a>
-              </div>
-            </div>
+      <section id="aktuelles" className="mb-16">
+        <div className="flex items-center gap-3 mb-8">
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gold-500 to-gold-600 flex items-center justify-center">
+            <span className="material-symbols-outlined text-white text-2xl">new_releases</span>
           </div>
-
-          {/* Card 2 */}
-          <div className="col-lg-4">
-            <div className="card border-primary mb-4">
-              <div className="card-body">
-                <h4 className="card-title">Kursprogramm</h4>
-                <p className="card-text">Diverse Kurse finden nachmittags und abends statt. Freie Plätze auf Anfrage verfügbar.</p>
-                <a href="#atelierkurse" className="btn btn-primary btn-lg">zum Kursprogramm</a><br /><br />
-                <a href="/assets/pdf/Flyer%202023.pdf" className="btn btn-primary btn-lg">Download Flyer</a>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 3 */}
-          <div className="col-lg-4">
-            <div className="card border-primary mb-4">
-              <div className="card-body">
-                <h4 className="card-title">Verkauf von Fächern</h4>
-                <p className="card-text">Ich bemale Fächer individuell, auch mit Clublogos. Handgemalt und einzigartig!</p>
-                <a href="mailto:chevigold@bluemail.ch?subject=Fächerbestellung" className="btn btn-primary btn-lg">hier bestellen</a>
-              </div>
-            </div>
-          </div>
-
+          <h2 className="text-3xl font-bold text-stone-800">Aktuelles</h2>
         </div>
 
-        {/* Additional Products */}
-        <div className="row">
-
-          {/* Card 4 */}
-          <div className="col-lg-4">
-            <div className="card border-primary mb-4">
-              <div className="card-body">
-                <h4 className="card-title">Verkauf von Acrylbildern</h4>
-                <p className="card-text">Liebevoll gestaltete Acrylbilder auf Leinwand zum Verkauf verfügbar.</p>
-                <a href="mailto:chevigold@bluemail.ch?subject=Acrylbildbestellung" className="btn btn-primary btn-lg">hier bestellen</a>
-              </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="card glass rounded-xl p-6 border border-gold-200/50">
+            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center mb-4">
+              <span className="material-symbols-outlined text-white text-2xl">local_bar</span>
             </div>
+            <h3 className="text-xl font-bold text-stone-800 mb-2">Glasobjekte</h3>
+            <p className="text-sm text-stone-500 mb-6">Glasobjekte wie Cakeplatten, Vasen und Uhren.</p>
+            <a href="mailto:chevigold@bluemail.ch" className="btn-gold">bestellen</a>
           </div>
 
-          {/* Card 5 */}
-          <div className="col-lg-4">
-            <div className="card border-primary mb-4">
-              <div className="card-body">
-                <h4 className="card-title">Country-Glasanhänger</h4>
-                <p className="card-text">Individuelle Glasanhänger – Form, Farbe und Sujet frei wählbar.</p>
-                <a href="mailto:chevigold@bluemail.ch?subject=Glasanhängerbestellung" className="btn btn-primary btn-lg">hier bestellen</a>
-              </div>
+          <div className="card glass rounded-xl p-6 border border-gold-200/50">
+            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-gold-500 to-gold-600 flex items-center justify-center mb-4">
+              <span className="material-symbols-outlined text-white text-2xl">school</span>
             </div>
+            <h3 className="text-xl font-bold text-stone-800 mb-2">Kursprogramm</h3>
+            <p className="text-sm text-stone-500 mb-6">Diverse Kurse nachmittags und abends.</p>
+            <a href="#atelierkurse" className="btn-gold">Kurse ansehen</a>
           </div>
-
         </div>
       </section>
 
-      {/* Atelierkurse Section */}
-      <section id="atelierkurse" className="mt-5">
-        <div className="page-header">
-          <h1>Atelierkurse</h1>
+      <div className="section-divider"></div>
+
+      <section id="atelierkurse" className="mb-16">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gold-500 to-gold-600 flex items-center justify-center">
+            <span className="material-symbols-outlined text-white text-2xl">brush</span>
+          </div>
+          <h2 className="text-3xl font-bold text-stone-800">Atelierkurse</h2>
         </div>
-        <p>Ich vermittle gerne mein Wissen und unterstütze bei der kreativen Umsetzung eigener Ideen. Seit über 15 Jahren führe ich diese Kurse mit Begeisterung durch.</p>
-        <div className="row">
 
-          {/* Kurs 1 */}
-          <div className="col-lg-4">
-            <div className="card border-primary mb-4">
-              <div className="card-body">
-                <h4 className="card-title">Acrylmalkurs</h4>
-                <p className="card-text">Malen Sie Leinwände nach Wunsch in kleinen Gruppen. Geeignet für Anfänger und Fortgeschrittene.</p>
-                <a href={`${basePath}/aag-acrylmalkurs-2024-01`} className="btn btn-primary btn-lg">Kurs Januar 2024</a><br />
-                <a href={`${basePath}/aag-acrylmalkurs-2023`} className="btn btn-secondary btn-lg mt-2">Kurs August 2023</a><br />
-                <a href={`${basePath}/aag-acrylmalkurs`} className="btn btn-secondary btn-lg mt-2">Kurs Januar 2023</a>
-              </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="card glass rounded-xl p-6 border border-gold-200/50">
+            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-4">
+              <span className="material-symbols-outlined text-white text-2xl">palette</span>
             </div>
+            <h3 className="text-xl font-bold text-stone-800 mb-2">Acrylmalkurs</h3>
+            <p className="text-sm text-stone-500 mb-6">Leinwaende malen in kleinen Gruppen.</p>
+            <a href={basePath + "/aag-acrylmalkurs-2024-01"} className="btn-gold">Kurs 2024</a>
           </div>
 
-          {/* Kurs 2 */}
-          <div className="col-lg-4">
-            <div className="card border-secondary mb-4">
-              <div className="card-body">
-                <h4 className="card-title">Glas- und Porzellanmalkurs</h4>
-                <p className="card-text">Individuelle Objekte bemalen mit moderner Technik. Perfekt auch für saisonale Motive.</p>
-                <a href={`${basePath}/aag-glasmalkurs-2024-01`} className="btn btn-primary btn-lg">Kurs Januar 2024</a><br />
-                <a href={`${basePath}/aag-glasmalkurs-2023`} className="btn btn-secondary btn-lg mt-2">Kurs August 2023</a><br />
-                <a href={`${basePath}/aag-glasmalkurs`} className="btn btn-secondary btn-lg mt-2">Kurs Januar 2023</a>
-              </div>
+          <div className="card glass rounded-xl p-6 border border-gold-200/50">
+            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center mb-4">
+              <span className="material-symbols-outlined text-white text-2xl">coffee</span>
             </div>
+            <h3 className="text-xl font-bold text-stone-800 mb-2">Glasmalkurs</h3>
+            <p className="text-sm text-stone-500 mb-6">Objekte bemalen mit moderner Technik.</p>
+            <a href={basePath + "/aag-glasmalkurs-2024-01"} className="btn-gold">Kurs 2024</a>
           </div>
 
-          {/* Kurs 3 */}
-          <div className="col-lg-4">
-            <div className="card border-success mb-4">
-              <div className="card-body">
-                <h4 className="card-title">Silberschmuckkurs</h4>
-                <p className="card-text">Gestalten Sie unter Anleitung Ringe, Anhänger oder Ohrschmuck in Silber.</p>
-                <a href={`${basePath}/aag-silberschmuckkurs-2024-01`} className="btn btn-primary btn-lg">Kurs Januar 2024</a><br />
-                <a href={`${basePath}/aag-silberschmuckkurs-2023`} className="btn btn-secondary btn-lg mt-2">Kurs August 2023</a><br />
-                <a href={`${basePath}/aag-silberschmuckkurs`} className="btn btn-secondary btn-lg mt-2">Kurs Januar 2023</a>
-              </div>
+          <div className="card glass rounded-xl p-6 border border-gold-200/50">
+            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-slate-500 to-slate-600 flex items-center justify-center mb-4">
+              <span className="material-symbols-outlined text-white text-2xl">diamond</span>
             </div>
+            <h3 className="text-xl font-bold text-stone-800 mb-2">Silberschmuck</h3>
+            <p className="text-sm text-stone-500 mb-6">Ringe und Anhaenger in Silber gestalten.</p>
+            <a href={basePath + "/aag-silberschmuckkurs-2024-01"} className="btn-gold">Kurs 2024</a>
           </div>
-
         </div>
       </section>
 
-      {/* Kontakt Section */}
-      <section id="kontakt" className="mt-5 mb-5">
-        <div className="page-header">
-          <h1>Kontakt</h1>
+      <div className="section-divider"></div>
+
+      <section id="kontakt" className="mb-8">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gold-500 to-gold-600 flex items-center justify-center">
+            <span className="material-symbols-outlined text-white text-2xl">contact_mail</span>
+          </div>
+          <h2 className="text-3xl font-bold text-stone-800">Kontakt</h2>
         </div>
-        <p>
-          Atelier Art Gold<br />
-          Evelyne Chevillat-Gold<br />
-          Vereinshausstrasse 18<br />
-          4133 Pratteln<br />
-          079 685 01 20<br />
-          chevigold@bluemail.ch
-        </p>
 
+        <div className="card glass rounded-xl p-8 border border-gold-200/50 max-w-md">
+          <div className="space-y-3 text-stone-600 relative z-10">
+            <p className="font-semibold text-stone-800 text-lg">Atelier Art Gold</p>
+            <p>Evelyne Chevillat-Gold</p>
+            <p>Vereinshausstrasse 18, 4133 Pratteln</p>
+            <p>079 685 01 20</p>
+            <a href="mailto:chevigold@bluemail.ch" className="text-gold-600">chevigold@bluemail.ch</a>
+          </div>
+        </div>
       </section>
-
-    </main>
+    </div>
   );
 }
