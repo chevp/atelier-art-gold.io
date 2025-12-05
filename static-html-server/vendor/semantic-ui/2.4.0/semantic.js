@@ -1744,7 +1744,7 @@ $.fn.form.settings = {
   },
 
   text: {
-    unspecifiedRule  : 'Please enter a valid value',
+    unspecifiedRule  : 'Enter a valid value',
     unspecifiedField : 'This field'
   },
 
